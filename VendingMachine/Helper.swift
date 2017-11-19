@@ -9,7 +9,7 @@ import UIKit
 
 struct CollectionViewHelpKit {
     
-    static func setupCollectionViewCells() -> UICollectionViewLayout {
+    static func setupCollectionView() -> UICollectionViewLayout {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
         

@@ -19,7 +19,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var quantityStepper: UIStepper!
     
-    
     let vendingMachine: VendingMachine
     var currentSelection: VendingSelection?
     
@@ -49,9 +48,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.collectionViewLayout = CollectionViewHelpKit.setupCollectionViewCells()
-        
-        updateDisplay()
+        collectionView.collectionViewLayout = CollectionViewHelpKit.setupCollectionView()
+        updateDisplayWith(balance: vendingMachine.amountDeposited, itemPrice:0, itemQuantity:1,  totalPrice:0.0)
     }
 
     // MARK: - Action
@@ -61,8 +59,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     @IBAction func updateQuantity(_ sender: UIStepper) {
-        quantityLabel.text = "\(sender.value)"
-        
+        updateDisplayWith(itemQuantity: Int(sender.value))
+    
         if let currentSelection = currentSelection, let item = vendingMachine.item(forSelection: currentSelection) {
             updatePrice(for: item)
         }
@@ -74,7 +72,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         if let currentSelection = currentSelection {
             do {
                 try vendingMachine.vend(selection: currentSelection, quantity: Int(quantityStepper.value))
-                updateDisplay()
+                updateDisplayWith(balance: vendingMachine.amountDeposited, itemPrice:0, itemQuantity:1,  totalPrice:0.0)
             } catch {
                 print("\(error)")
             }
@@ -92,16 +90,29 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     // MARK: - Vending Machine
     
-    func updateDisplay() -> () {
-        balanceLabel.text = "$\(vendingMachine.amountDeposited)"
-        totalLabel.text = "$00.00"
-        priceLabel.text = "$00.00"
-        quantityLabel.text = "1"
+    func updateDisplayWith(balance: Double? = nil, itemPrice: Double? = nil, itemQuantity: Int? = nil, totalPrice: Double? = nil) -> () {
+        
+        if let balanceValue = balance {
+            balanceLabel.text = "$\(balanceValue)"
+        }
 
+        if let totalPriceValue = totalPrice {
+            totalLabel.text = "$\(totalPriceValue)"
+        }
+        
+        if let itemPriceValue = itemPrice {
+            priceLabel.text = "$\(itemPriceValue)"
+        }
+        
+        if let itemQuantityValue = itemQuantity {
+            quantityLabel.text = "\(Int(itemQuantityValue))"
+        }
+        
     }
     
     func updatePrice(for item: VendingItem) -> () {
-        totalLabel.text = "$\(item.price * Double(quantityStepper.value))"
+        let totalPrice = item.price * Double(quantityStepper.value)
+        updateDisplayWith(totalPrice: totalPrice)
     }
     
     // MARK: UICollectionViewDataSource
@@ -126,15 +137,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         updateCell(having: indexPath, selected: true)
         
         quantityStepper.value = 1
-        quantityLabel.text = "1"
-        totalLabel.text = "$00.00"
+        updateDisplayWith(itemQuantity: 1, totalPrice: 0)
+        
         
         currentSelection = vendingMachine.selection[indexPath.row]
         
         if let currentSelection = currentSelection, let item = vendingMachine.item(forSelection: currentSelection) {
             
-            priceLabel.text = "$\(item.price)"
-            totalLabel.text = "$\(item.price * Double(quantityStepper.value))"
+            updateDisplayWith(itemPrice: item.price, totalPrice: item.price * Double(quantityStepper.value))
+
         }
     }
     
@@ -162,5 +173,4 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             cell.contentView.backgroundColor = selected ? selectedBackgroundColor : defaultBackgroundColor
         }
     }
-
 }
