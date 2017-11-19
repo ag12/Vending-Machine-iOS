@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A281C8E1FC1A3720009642D /* InventoryUnarchiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A281C8D1FC1A3720009642D /* InventoryUnarchiver.swift */; };
+		1A281C901FC1C86D0009642D /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A281C8F1FC1C86D0009642D /* Helper.swift */; };
+		1A477C1B1FBDE719006EBEA9 /* VendingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A477C1A1FBDE719006EBEA9 /* VendingMachine.swift */; };
+		1A477C1D1FBDF358006EBEA9 /* PlistConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A477C1C1FBDF358006EBEA9 /* PlistConverter.swift */; };
 		9771F6B51DF0833300B2B06D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771F6B41DF0833300B2B06D /* AppDelegate.swift */; };
 		9771F6B71DF0833300B2B06D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771F6B61DF0833300B2B06D /* ViewController.swift */; };
 		9771F6BA1DF0833300B2B06D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9771F6B81DF0833300B2B06D /* Main.storyboard */; };
@@ -14,10 +18,13 @@
 		9771F6BF1DF0833300B2B06D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9771F6BD1DF0833300B2B06D /* LaunchScreen.storyboard */; };
 		9771F6C71DF0A6C000B2B06D /* VendingItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9771F6C61DF0A6C000B2B06D /* VendingItemCell.swift */; };
 		9771F6CD1DF0D68E00B2B06D /* VendingInventory.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9771F6CC1DF0D68E00B2B06D /* VendingInventory.plist */; };
-		BEF0E7B41DF71E6A001410F7 /* VendingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF0E7B31DF71E6A001410F7 /* VendingMachine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A281C8D1FC1A3720009642D /* InventoryUnarchiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryUnarchiver.swift; sourceTree = "<group>"; };
+		1A281C8F1FC1C86D0009642D /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		1A477C1A1FBDE719006EBEA9 /* VendingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendingMachine.swift; sourceTree = "<group>"; };
+		1A477C1C1FBDF358006EBEA9 /* PlistConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlistConverter.swift; sourceTree = "<group>"; };
 		9771F6B11DF0833300B2B06D /* VendingMachine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VendingMachine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9771F6B41DF0833300B2B06D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9771F6B61DF0833300B2B06D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +34,6 @@
 		9771F6C01DF0833300B2B06D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9771F6C61DF0A6C000B2B06D /* VendingItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendingItemCell.swift; sourceTree = "<group>"; };
 		9771F6CC1DF0D68E00B2B06D /* VendingInventory.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = VendingInventory.plist; sourceTree = "<group>"; };
-		BEF0E7B31DF71E6A001410F7 /* VendingMachine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VendingMachine.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +69,15 @@
 				9771F6B41DF0833300B2B06D /* AppDelegate.swift */,
 				9771F6B61DF0833300B2B06D /* ViewController.swift */,
 				9771F6C61DF0A6C000B2B06D /* VendingItemCell.swift */,
-				BEF0E7B31DF71E6A001410F7 /* VendingMachine.swift */,
 				9771F6B81DF0833300B2B06D /* Main.storyboard */,
 				9771F6BB1DF0833300B2B06D /* Assets.xcassets */,
 				9771F6BD1DF0833300B2B06D /* LaunchScreen.storyboard */,
 				9771F6C01DF0833300B2B06D /* Info.plist */,
 				9771F6CC1DF0D68E00B2B06D /* VendingInventory.plist */,
+				1A477C1A1FBDE719006EBEA9 /* VendingMachine.swift */,
+				1A477C1C1FBDF358006EBEA9 /* PlistConverter.swift */,
+				1A281C8D1FC1A3720009642D /* InventoryUnarchiver.swift */,
+				1A281C8F1FC1C86D0009642D /* Helper.swift */,
 			);
 			path = VendingMachine;
 			sourceTree = "<group>";
@@ -101,7 +110,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0910;
-				ORGANIZATIONNAME = "Treehouse Island, Inc";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					9771F6B01DF0833300B2B06D = {
 						CreatedOnToolsVersion = 8.1;
@@ -149,9 +158,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				9771F6B71DF0833300B2B06D /* ViewController.swift in Sources */,
+				1A281C901FC1C86D0009642D /* Helper.swift in Sources */,
+				1A281C8E1FC1A3720009642D /* InventoryUnarchiver.swift in Sources */,
 				9771F6B51DF0833300B2B06D /* AppDelegate.swift in Sources */,
 				9771F6C71DF0A6C000B2B06D /* VendingItemCell.swift in Sources */,
-				BEF0E7B41DF71E6A001410F7 /* VendingMachine.swift in Sources */,
+				1A477C1D1FBDF358006EBEA9 /* PlistConverter.swift in Sources */,
+				1A477C1B1FBDE719006EBEA9 /* VendingMachine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
