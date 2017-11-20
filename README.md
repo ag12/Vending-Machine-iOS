@@ -1,2 +1,6 @@
 # Vending-Machine-iOS
-Protocols and UI
+Protocols, Error handling and UI
+
+#Todo:
+Remove Storyboard.
+Code cleaning. 
