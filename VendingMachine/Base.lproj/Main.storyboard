@@ -88,6 +88,9 @@
                                                 <rect key="frame" x="8" y="17.5" width="74" height="30"/>
                                                 <color key="tintColor" red="0.0078431372550000003" green="0.75294117650000003" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" title="Add Funds"/>
+                                                <connections>
+                                                    <action selector="addFoundsClick" destination="BYZ-38-t0r" eventType="touchUpInside" id="H4W-Z2-cVz"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$80.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vwe-cn-0a2">
                                                 <rect key="frame" x="297" y="20.5" width="70" height="24"/>

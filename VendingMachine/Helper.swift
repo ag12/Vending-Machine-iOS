@@ -26,3 +26,14 @@ struct CollectionViewHelpKit {
         return layout
     }
 }
+
+struct AlertControllerHelpKit {
+    
+    static func alertController(title: String, message: String, handler: @escaping (UIAlertAction) -> Void ) -> UIAlertController {
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: handler)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(okAction)
+        return alertController
+        
+    }
+}

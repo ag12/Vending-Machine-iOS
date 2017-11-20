@@ -66,6 +66,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         }
     }
     
+    @IBAction func addFoundsClick() {
+        vendingMachine.deposit(5)
+        updateDisplayWith(balance: vendingMachine.amountDeposited)
+    }
     
     func purchaseItem() -> () {
         
@@ -73,20 +77,35 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
             do {
                 try vendingMachine.vend(selection: currentSelection, quantity: Int(quantityStepper.value))
                 updateDisplayWith(balance: vendingMachine.amountDeposited, itemPrice:0, itemQuantity:1,  totalPrice:0.0)
-            } catch {
-                print("\(error)")
+            } catch VendingMachineError.invalidSelection {
+                showAlertWith(message: "Invalid selection")
+            } catch VendingMachineError.outOfStock {
+                showAlertWith(message: "Out of stock")
+            } catch VendingMachineError.insufficientFunds(let required) {
+                showAlertWith(title: "LOL!", message: "Insufficient funds, you need \(required)")
+            } catch let error {
+                fatalError("\(error)")
             }
             
             if let indexPath = collectionView.indexPathsForSelectedItems?.first {
                 collectionView.deselectItem(at: indexPath, animated: true)
                 updateCell(having: indexPath, selected: false)
             }
+
+            self.currentSelection = nil
             
         } else {
-            // FIXME: Alert user to no selection
+            showAlertWith(message: "You need to select a item first")
         }
     }
     
+    
+    func showAlertWith(title: String = "Ouch!",  message: String) -> () {
+        
+        present(AlertControllerHelpKit.alertController(title: title, message: message, handler: {(sender: UIAlertAction) -> Void in
+            self.updateDisplayWith(itemPrice: 0.0, itemQuantity: 1, totalPrice: 0.0)
+        }), animated: true, completion: nil)
+    }
     
     // MARK: - Vending Machine
     
@@ -151,17 +170,14 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         updateCell(having: indexPath, selected: false)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         updateCell(having: indexPath, selected: true)
-
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         updateCell(having: indexPath, selected: false)
-
     }
     
     func updateCell(having indexPath: IndexPath, selected: Bool) {

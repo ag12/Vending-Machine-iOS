@@ -61,7 +61,7 @@ enum VendingMachineError: Error {
 class FoodVendingMachine: VendingMachine {
     let selection: [VendingSelection] = [.soda, .dietSoda, .chips, .cookie, .sandwich, .wrap, .candyBar, .popTart, .water, .fruitJuice, .sportsDrink, .gum]
     var inventory: [VendingSelection : VendingItem]
-    var amountDeposited: Double = 5
+    var amountDeposited: Double = 10
     
     required init(inventory: [VendingSelection : VendingItem]) {
         self.inventory = inventory
@@ -83,6 +83,7 @@ class FoodVendingMachine: VendingMachine {
             item.quantity -= quantity
             
             inventory.updateValue(item, forKey: selection)
+            
         } else {
             let amountRequired = totalPrice - amountDeposited
             throw VendingMachineError.insufficientFunds(required: amountRequired)
@@ -97,12 +98,3 @@ class FoodVendingMachine: VendingMachine {
         return inventory[selection]
     }
 }
-
-
-
-
-
-
-
-
-
